@@ -1,33 +1,92 @@
 version: "2.0"
 
+actions:
+- utter_greet
+- utter_ask_seat
+- utter_ask_section
+- utter_ask_time
+- utter_booking_confirmation
+- utter_goodbye
+- utter_not_clear
+
 intents:
   - greet
+      use entities: []
   - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
+      use entities: []
+  - when
+      use entities: 
+        - time
+  - section
+      use entities: 
+        - section
+  - seat
+      use entities: 
+        - number_of_seats
+  - reserve
+      use entities: 
+        - time
+        - section
+        - number_of_seats
+
+entities:
+  - number_of_seats
+  - section
+  - time
+
+slots:
+  number_of_seats:
+    type: float
+    influence_conversation: false
+  section:
+    type: categorical
+    values:
+      -AC
+      -Non AC
+    influence_conversation: false
+  time:
+    type: addons.my_custom_slots.TimeSlot
+    influence_conversation: true
+
+forms:
+  restaurant_form:
+    required_slots:
+        number_of_seats:
+          - type: from_entity
+            entity: number_of_seats
+        section:
+          - type: from_entity
+            entity: section
+        time:
+          - type: from_entity
+            entity: time
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Welcome to Lipi's restaurant! How can I help you ?"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_ask_seat:
+  - text: "How many seats would you like to reserve?"
 
-  utter_did_that_help:
-  - text: "Did that help you?"
+  utter_ask_section:
+  - text: "Which section would you like to book"
+    buttons:
+    - title: "AC"
+      payload: '/choose{"section": "AC"}'
+    - title: "Non-AC"
+      payload: '/choose{"section": "blue"}'
 
-  utter_happy:
-  - text: "Great, carry on!"
+  utter_ask_time: 
+  - text: "When would you like to book a reservation? (We are only open from 7pm to 10pm)"
 
   utter_goodbye:
-  - text: "Bye"
+  - text: "Thank You for using our services ! Goodbye !"
 
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  utter_not_clear:
+  - text: "I did not understand, please try another way of saying it."
+
+  utter_booking_confirmation:
+  - text: "You have reserved {number_of_seats} seats in our {section} section for {time}. Thanks!"
 
 session_config:
   session_expiration_time: 60
