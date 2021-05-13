@@ -2,13 +2,22 @@ version: "2.0"
 
 rules:
 
+- rule: Greet anytime the user greets
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
 - rule: Activate form
   steps:
   - intent: reserve
   - action: restaurant_form
   - active_loop: restaurant_form
 
-rules:
 - rule: Submit form
   condition:
   - active_loop: restaurant_form
@@ -18,13 +27,3 @@ rules:
   - slot_was_set:
     - requested_slot: null
   - action: utter_booking_confirmation
-
-- rule: Say welcome anytime the user greets
-  steps:
-  - intent: greet
-  - action: utter_greet
-
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye

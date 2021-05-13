@@ -36,42 +36,42 @@ nlu:
   examples: |
     - I want to reserve a table
     - I want to book a table
-    - I want to reserve a table for a party of 4
-    - I want to book a table for 2 people
-    - I want to book a table tonight at 8:30 pm
-    - I want to reserve a table for 2 people in Non-AC section
-    - Please book a table for me in AC section at 8:45 pm
-    - Reserve a table for 4 people
+    - I want to reserve a table for a party of [4]{"entity":"seat"}
+    - I want to book a table for [2]{"entity":"seat"} people
+    - I want to book a table tonight at [8:30 pm]{"entity":"time"}
+    - I want to reserve a table for [2]{"entity":"seat"} people in [Non-AC]{"entity":"section"} section
+    - Please book a table for me in [AC]{"entity":"section"} section at [8:45 pm]{"entity":"time"}
+    - Reserve a table for [4]{"entity":"seat"} people
     - Could you book a table for me?
     - Book me a table
-    - I want to book a table for a party of 4 at 7:00 pm
-    - I want to book a table for 5 people in half an hour
-    - I want to reserve a table for 4 people in AC section at 8:00 pm
-    - Book me a table for 3 people in Non-AC section at 7:50 pm tonight.
-    - I want to reserve a table in AC section.
+    - I want to book a table for a party of [4]{"entity":"seat"} at [7:00 pm]{"entity":"time"}
+    - I want to book a table for [5]{"entity":"seat"} people in [half an hour]{"entity":"time"}
+    - I want to reserve a table for [4]{"entity":"seat"} people in [AC]{"entity":"section"} section at [8'o clock in the evening]{"entity":"time"}
+    - Book me a table for [3]{"entity":"seat"} people in [Non-AC]{"entity":"section"} section at [7:50 tonight]{"entity":"time"}.
+    - I want to reserve a table in [Non-AC]{"entity":"section"} section.
     
 
 - intent: section
   examples: |
-    - AC
-    - Non-AC
+    - [AC]{"entity":"section"}
+    - [Non-AC]{"entity":"section"}
 
 - intent: seat
   examples: |
-    - 2 seats
-    - a table for a party of 4
-    - 4
-    - 1 seat
-    - 10 seats for a party
+    - [2]{"entity":"seat"} seats
+    - a table for a party of [4]{"entity":"seat"}
+    - [4]{"entity":"seat"}
+    - [1]{"entity":"seat"} seat
+    - [10]{"entity":"seat"} seats for a party
     
 
 - intent: when
   examples: |
-    - In half an hour
-    - In 10 minutes
-    - 7:30 pm
-    - At 4:45 pm
-    - At 8'o clock in the evening
-    - 9'o clock in the morning 
-    - At 12 noon
-    - 10:15 pm tonight
+    - In [half an hour]{"entity":"time"}
+    - In [10 minutes]{"entity":"time"}
+    - [7:30 pm]{"entity":"time"}
+    - At [4:45 pm]{"entity":"time"}
+    - At [8'o clock in the evening]{"entity":"time"}
+    - [9'o clock in the morning]{"entity":"time"} 
+    - At [12 noon]{"entity":"time"}
+    - [10:15 tonight]{"entity":"time"}

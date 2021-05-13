@@ -10,32 +10,32 @@ actions:
 - utter_not_clear
 
 intents:
-  - greet
+  - greet:
       use entities: []
-  - goodbye
+  - goodbye:
       use entities: []
-  - when
+  - when:
       use entities: 
         - time
-  - section
+  - section:
       use entities: 
         - section
-  - seat
+  - seat:
       use entities: 
-        - number_of_seats
-  - reserve
+        - seaty
+  - reserve:
       use entities: 
         - time
         - section
-        - number_of_seats
+        - seaty
 
 entities:
-  - number_of_seats
+  - seaty
   - section
   - time
 
 slots:
-  number_of_seats:
+  seaty:
     type: float
     influence_conversation: false
   section:
@@ -45,15 +45,15 @@ slots:
       -Non AC
     influence_conversation: false
   time:
-    type: addons.my_custom_slots.TimeSlot
-    influence_conversation: true
+    type: text
+    influence_conversation: false
 
 forms:
   restaurant_form:
     required_slots:
-        number_of_seats:
+        seaty:
           - type: from_entity
-            entity: number_of_seats
+            entity: seaty
         section:
           - type: from_entity
             entity: section
@@ -72,9 +72,9 @@ responses:
   - text: "Which section would you like to book"
     buttons:
     - title: "AC"
-      payload: '/choose{"section": "AC"}'
+      payload: '/section{{"section": "AC"}}'
     - title: "Non-AC"
-      payload: '/choose{"section": "blue"}'
+      payload: '/section{{"section": "blue"}}'
 
   utter_ask_time: 
   - text: "When would you like to book a reservation? (We are only open from 7pm to 10pm)"
@@ -86,7 +86,7 @@ responses:
   - text: "I did not understand, please try another way of saying it."
 
   utter_booking_confirmation:
-  - text: "You have reserved {number_of_seats} seats in our {section} section for {time}. Thanks!"
+  - text: "You have reserved {seaty} seats in our {section} section for {time}. Thanks!"
 
 session_config:
   session_expiration_time: 60
