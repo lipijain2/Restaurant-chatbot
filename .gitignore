@@ -1,4 +1,10 @@
 __pycache__/
 *.pyc
 venv/
+venv1/
 models/
+events.*
+*.pyc
+.vscode/
+*.dot
+*.db
