@@ -31,47 +31,94 @@ nlu:
     - bye bye
     - see you later
     - good day
+    - Thank you
+    - Thanks
 
 - intent: reserve
   examples: |
+    - Reserve
     - I want to reserve a table
     - I want to book a table
-    - I want to reserve a table for a party of [4]{"entity":"seat"}
-    - I want to book a table for [2]{"entity":"seat"} people
-    - I want to book a table tonight at [8:30 pm]{"entity":"time"}
-    - I want to reserve a table for [2]{"entity":"seat"} people in [Non-AC]{"entity":"section"} section
-    - Please book a table for me in [AC]{"entity":"section"} section at [8:45 pm]{"entity":"time"}
-    - Reserve a table for [4]{"entity":"seat"} people
+    - I want to reserve a table for a party of [4](seats)
+    - I want to book a table for [2](seats) people
+    - I want to book a table tonight at 8:30 pm
+    - I want to reserve a table for [2](seats) people in [Non-AC](section) section
+    - Please book a table for me in [AC](section) section at 8:45 pm
+    - Reserve a table for [4](seats) people
     - Could you book a table for me?
     - Book me a table
-    - I want to book a table for a party of [4]{"entity":"seat"} at [7:00 pm]{"entity":"time"}
-    - I want to book a table for [5]{"entity":"seat"} people in [half an hour]{"entity":"time"}
-    - I want to reserve a table for [4]{"entity":"seat"} people in [AC]{"entity":"section"} section at [8'o clock in the evening]{"entity":"time"}
-    - Book me a table for [3]{"entity":"seat"} people in [Non-AC]{"entity":"section"} section at [7:50 tonight]{"entity":"time"}.
-    - I want to reserve a table in [Non-AC]{"entity":"section"} section.
+    - I want to book a table for a party of [4](seats) at 7 pm
+    - I want to book a table for [5](seats) people in half an hour
+    - I want to reserve a table for [4](seats) people in [AC](section) section in 30 minutes 
+    - Book me a table for [3](seats) people in [Non-AC](section) section at 7:50 tonight.
+    - I want to reserve a table in [Non-AC](section) section.
     
 
 - intent: section
   examples: |
-    - [AC]{"entity":"section"}
-    - [Non-AC]{"entity":"section"}
+    - [AC](section)
+    - [Non-AC](section)
 
 - intent: seat
   examples: |
-    - [2]{"entity":"seat"} seats
-    - a table for a party of [4]{"entity":"seat"}
-    - [4]{"entity":"seat"}
-    - [1]{"entity":"seat"} seat
-    - [10]{"entity":"seat"} seats for a party
-    
+    - [2](seats) seats
+    - a table for a party of [4](seats)
+    - [4](seats)
+    - [1](seats) seat
+    - [10](seats) seats for a party
+    - for [7](seats) people
+    - for [10](seats) members
+    - for [9](seats) peeps
 
-- intent: when
+- intent: time
   examples: |
-    - In [half an hour]{"entity":"time"}
-    - In [10 minutes]{"entity":"time"}
-    - [7:30 pm]{"entity":"time"}
-    - At [4:45 pm]{"entity":"time"}
-    - At [8'o clock in the evening]{"entity":"time"}
-    - [9'o clock in the morning]{"entity":"time"} 
-    - At [12 noon]{"entity":"time"}
-    - [10:15 tonight]{"entity":"time"}
+    - In half an hour
+    - In 10 minutes
+    - 7:30 pm
+    - At 4:45 pm
+    - At 8'o clock in the evening
+    - 9'o clock in the morning 
+    - At 12 noon
+    - 10:15 tonight
+    - 7pm
+
+- intent: faq/timings
+  examples: |
+    - What are your timings?
+    - When does the restaurant open?
+    - When does the restaurant close?
+    - What hours do you serve dinner?
+    - May I know the timings of your restaurant?
+    - What are your opening hours and closing hours?
+    - What time will you open today?
+    - What time does the restaurant close today?
+    - Timings?
+  
+- intent: faq/days
+  examples: |
+    - What days are you open?
+    - What days is the restaurant open?
+    - Is the restaurant open every day?
+    - Could you tell me when you're open?
+    - Are you open on saturday?
+    - What are you working days?
+    
+- intent: faq/cancel
+  examples: |
+    - How do I cancel a reservation?
+    - Can I cancel reservation?
+    - Is there any way to cancel the previous booking?
+    - Is cancellaion of booking possible?
+    - I want to cancel a resevation? Could you tell me the way?
+    - Cancel
+    - Please cancel my reservation
+    - What is your cancellation procedure?
+  
+- intent: faq/specials
+  examples: |
+    - What are the specials?
+    - What is the speciality of your restaurant?
+    - What makes your restaurant famous?
+    - Tell me the special thing about your restaurant
+    - Specials
+    - Do you have any special menu?
