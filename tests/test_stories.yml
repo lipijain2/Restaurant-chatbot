@@ -1,91 +1,177 @@
-#### This file contains tests to evaluate that your bot behaves as expected.
-#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+version: "2.0"
 
 stories:
-- story: happy path 1
+- story: Story from Conversation ID e42e558f22d5416da2eadc7795fd36b1
   steps:
-  - user: |
-      hello there!
-    intent: greet
+  - intent: greet
   - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
-
-- story: happy path 2
-  steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
-  - user: |
-      bye-bye!
-    intent: goodbye
+  - intent: reserve
+  - action: restaurant_form
+  - active_loop: restaurant_form
+  - slot_was_set:
+    - requested_slot: time
+  - intent: time
+    entities:
+    - time: '2021-05-21T21:00:00.000-07:00'
+  - slot_was_set:
+    - time: '2021-05-21T21:00:00.000-07:00'
+  - action: restaurant_form
+  - slot_was_set:
+    - time: 21:00
+  - slot_was_set:
+    - requested_slot: seats
+  - intent: seat
+    entities:
+    - seats: '5'
+  - slot_was_set:
+    - seats: '5'
+  - action: restaurant_form
+  - slot_was_set:
+    - time: 21:00
+  - slot_was_set:
+    - seats: '5'
+  - slot_was_set:
+    - requested_slot: section
+  - intent: section
+    entities:
+    - section: AC
+  - slot_was_set:
+    - section: AC
+  - action: restaurant_form
+  - slot_was_set:
+    - time: 21:00
+  - slot_was_set:
+    - section: AC
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_booking_confirmation
+  - intent: goodbye
   - action: utter_goodbye
 
-- story: sad path 1
+- story: Story from Conversation ID 2ec95b9350d74948aa5c055b9b752ee5
   steps:
-  - user: |
-      hello
-    intent: greet
+  - intent: greet
   - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      yes
-    intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      not really
-    intent: deny
+  - intent: reserve
+    entities:
+    - seats: '4'
+  - slot_was_set:
+    - seats: '4'
+  - action: restaurant_form
+  - active_loop: restaurant_form
+  - slot_was_set:
+    - seats: '4'
+  - slot_was_set:
+    - requested_slot: time
+  - slot_was_set:
+    - seats: '4'
+  - slot_was_set:
+    - requested_slot: time
+  - intent: time
+    entities:
+    - time: '2021-05-21T16:00:00.000-07:00'
+  - slot_was_set:
+    - time: '2021-05-21T16:00:00.000-07:00'
+  - action: restaurant_form
+  - slot_was_set:
+    - time: null
+  - slot_was_set:
+    - requested_slot: time
+  - intent: time
+    entities:
+    - time: '2021-05-21T19:50:00.000-07:00'
+  - slot_was_set:
+    - time: '2021-05-21T19:50:00.000-07:00'
+  - action: restaurant_form
+  - slot_was_set:
+    - time: 19:50
+  - slot_was_set:
+    - requested_slot: section
+  - intent: section
+    entities:
+    - section: Non-AC
+  - slot_was_set:
+    - section: Non-AC
+  - action: restaurant_form
+  - slot_was_set:
+    - time: 19:50
+  - slot_was_set:
+    - section: Non-AC
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_booking_confirmation
+  - intent: faq
+  - action: utter_faq
+  - intent: goodbye
   - action: utter_goodbye
 
-- story: sad path 3
+  
+- story: Story from Conversation ID 928600b6c0f74afabe00f0c84c26b299
   steps:
-  - user: |
-      hi
-    intent: greet
+  - intent: greet
   - action: utter_greet
-  - user: |
-      very terrible
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      no
-    intent: deny
+  - intent: reserve
+    entities:
+    - section: AC
+  - slot_was_set:
+    - section: AC
+  - action: restaurant_form
+  - active_loop: restaurant_form
+  - slot_was_set:
+    - section: AC
+  - slot_was_set:
+    - requested_slot: time
+  - slot_was_set:
+    - section: AC
+  - slot_was_set:
+    - requested_slot: time
+  - intent: time
+    entities:
+    - time: '2021-05-22T08:00:00.000-07:00'
+  - slot_was_set:
+    - time: '2021-05-22T08:00:00.000-07:00'
+  - action: restaurant_form
+  - slot_was_set:
+    - time: null
+  - slot_was_set:
+    - requested_slot: time
+  - intent: time
+    entities:
+    - time: '2021-05-21T21:00:00.000-07:00'
+  - slot_was_set:
+    - time: '2021-05-21T21:00:00.000-07:00'
+  - action: restaurant_form
+  - slot_was_set:
+    - time: 21:00
+  - slot_was_set:
+    - requested_slot: seats
+  - intent: reserve
+    entities:
+    - seats: '5'
+  - slot_was_set:
+    - seats: '5'
+  - action: restaurant_form
+  - slot_was_set:
+    - time: 21:00
+  - slot_was_set:
+    - seats: '5'
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_booking_confirmation
+  - intent: faq
+  - action: utter_faq
+  - intent: goodbye
   - action: utter_goodbye
 
-- story: say goodbye
-  steps:
-  - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
 
-- story: bot challenge
-  steps:
-  - user: |
-      are you a bot?
-    intent: bot_challenge
-  - action: utter_iamabot
+
+
