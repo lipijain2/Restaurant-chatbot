@@ -1,3 +1,4 @@
+
 version: "2.0"
 
 nlu:
@@ -16,7 +17,6 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
 - intent: goodbye
   examples: |
     - good afternoon
@@ -33,7 +33,6 @@ nlu:
     - good day
     - Thank you
     - Thanks
-
 - intent: reserve
   examples: |
     - Reserve
@@ -53,13 +52,11 @@ nlu:
     - Book me a table for [3](seats) people in [Non-AC](section) section at 7:50 tonight.
     - I want to reserve a table in [Non-AC](section) section.
     
-
 - intent: section
   examples: |
     - [AC](section)
     - [Non-AC](section)
-
-- intent: seat
+- intent: seats
   examples: |
     - [2](seats) seats
     - a table for a party of [4](seats)
@@ -69,7 +66,6 @@ nlu:
     - for [7](seats) people
     - for [10](seats) members
     - for [9](seats) peeps
-
 - intent: time
   examples: |
     - In half an hour
@@ -81,7 +77,6 @@ nlu:
     - At 12 noon
     - 10:15 tonight
     - 7pm
-
 - intent: faq/timings
   examples: |
     - What are your timings?

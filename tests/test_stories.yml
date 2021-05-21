@@ -172,6 +172,60 @@ stories:
   - intent: goodbye
   - action: utter_goodbye
 
+  - story: Story from Conversation ID c1fdf1797946436683c0dd277ab26def
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: reserve
+    entities:
+    - time: '2021-05-21T21:00:00.000-07:00'
+  - slot_was_set:
+    - time: '2021-05-21T21:00:00.000-07:00'
+  - action: restaurant_form
+  - active_loop: restaurant_form
+  - slot_was_set:
+    - time: 21:00
+  - slot_was_set:
+    - requested_slot: seats
+  - intent: seat
+    entities:
+    - seats: '12'
+  - slot_was_set:
+    - seats: '12'
+  - action: restaurant_form
+  - slot_was_set:
+    - time: 21:00
+  - slot_was_set:
+    - seats: '12'
+  - slot_was_set:
+    - requested_slot: section
+  - intent: faq/days
+  - action: restaurant_form
+  - slot_was_set:
+    - time: 21:00
+  - slot_was_set:
+    - requested_slot: section
+  - intent: section
+    entities:
+    - section: AC
+  - slot_was_set:
+    - section: AC
+  - action: restaurant_form
+  - slot_was_set:
+    - time: 21:00
+  - slot_was_set:
+    - section: AC
+  - slot_was_set:
+    - requested_slot: null
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_booking_confirmation
+  - intent: faq/days
+  - action: utter_faq
+  - intent: goodbye
+  - action: utter_goodbye
+
 
 
 

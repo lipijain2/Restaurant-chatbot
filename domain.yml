@@ -70,7 +70,7 @@ responses:
   - text: "Welcome to Lipi's restaurant! How can I help you ?"
 
   utter_ask_seats:
-  - text: "How many seatss would you like to reserve?"
+  - text: "How many seats would you like to reserve?"
 
   utter_ask_section:
   - text: "Which section would you like to book"
@@ -81,7 +81,7 @@ responses:
       payload: '/section{{"section": "Non-AC"}}'
 
   utter_ask_time: 
-  - text: "time would you like to book a reservation?"
+  - text: "At what time would you like to book a reservation?"
 
   utter_goodbye:
   - text: "Thank You for using our services ! Goodbye !"
